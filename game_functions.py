@@ -56,7 +56,7 @@ def check_events(ai_settings, screen, ship, bullets):
                 ship.moving_left = False
             '''
 
-def update_screen(ai_settings, screen, ship, aliens, bullets):
+def update_screen(ai_settings, screen, ship, aliens, bullets, play_button):
     """Update images on the screen and flip to the new screen."""
     # Redraw the screen during each pass through the loop.
     screen.fill(ai_settings.bg_color)
@@ -69,6 +69,10 @@ def update_screen(ai_settings, screen, ship, aliens, bullets):
     # When you call draw() on a group, Pygame automatically draws each element
     # in the group at the position defined by its rect attribute.
 
+    #Draw the play button if the game is inactive.
+    if not stats.game_active:
+        play_button.draw_button()
+        
     # Make the most recently drawn screen visible.
     pygame.display.flip()
 
